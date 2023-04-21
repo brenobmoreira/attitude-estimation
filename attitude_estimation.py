@@ -1,5 +1,6 @@
 import numpy as np
 from datetime import datetime
+import csv
 
 ## roll fi, pitch theta
 
@@ -13,6 +14,13 @@ def pitch_angle(Gpx, Gpy, Gpz):
     theta = np.arctan(pitch)*180/np.pi ## converting to arctan and rad to grad
     
     return round(theta, 4)
+
+## creating csv to save the angles
+
+data_save = open('pitch_and_roll_angles.csv', 'w', newline='', encoding='utf-8')
+w = csv.writer(data_save)
+
+w.writerow(['data', 'roll(fi) angle', 'pitch(theta) angle'])
 
 ## Organizating the data 
 
@@ -50,5 +58,7 @@ for i in organizated:
     theta = pitch_angle(Gpx, Gpy, Gpz)
     print(theta)
     print('\n')
-    
-    
+
+    w.writerow([time_stamp, fi, theta]) ## writing csv to save the angles
+
+data_save.close()
