@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/Breno Moreira/Desktop/Breno/HEXAGON/attitude-estimation",
-      "program": "c:/Users/Breno Moreira/Desktop/Breno/HEXAGON/attitude-estimation/attitude_estimation.cpp",
+      "program": "c:/Users/Breno Moreira/Desktop/Breno/HEXAGON/attitude-estimation/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
