@@ -68,9 +68,9 @@ int main() {
         
         cout << "For time: " << ctime(&time_stamp);
         cout << "Gpx, Gpy and Gpz" << endl;
-        cout << Gpx << endl;
-        cout << Gpy << endl;
-        cout << Gpz << endl;
+        cout << i[1] << endl;
+        cout << i[2] << endl;
+        cout << i[3] << endl;
         cout << "Roll angle:" << endl;
 
         double fi = roll_angle(Gpy, Gpz);
@@ -81,7 +81,8 @@ int main() {
         cout << theta << endl;
         cout << "\n" << endl;
 
-        data_save << ctime(&time_stamp) << "," << fi << "," << theta << "\n";
+        string time_str = ctime(&time_stamp);
+        data_save << time_str + "," << fi << "," << theta << "\n";
     }
      
     data_save.close();
