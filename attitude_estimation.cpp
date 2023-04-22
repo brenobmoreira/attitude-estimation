@@ -35,7 +35,6 @@ int main() {
     if (file.is_open()) {
         while (getline(file, line)) {
             data.push_back(line);
-            cout << line << endl;
         }
         file.close();
     }
@@ -44,6 +43,30 @@ int main() {
         cout << "Unable to open file" << endl;
     }
 
+    for (const auto& element : data) {
+        vector<string> temp;
+        size_t start = 0;
+        size_t end = 0;
+        while ((end = element.find(';', start)) != string::npos) {
+            temp.push_back(element.substr(start, end-start));
+            start = end + 1;
+        }
+        temp.push_back(element.substr(start));
+        organizated.push_back(temp);
+    }
+
+    for (const auto& i : organizated) {
+        
+        string Gpx = i[1];
+        string Gpy = i[2];
+        string Gpz = i[3];
+
+        cout << "Indíce ---" << endl;
+        cout << Gpx << endl;
+        cout << Gpy << endl;
+        cout << Gpz << endl;
+    } 
+    
     //double Gpx = 0.461105;
     //double Gpy = 0.082198;
     //double Gpz = -0.1;
@@ -52,6 +75,6 @@ int main() {
     //double theta = pitch_angle(Gpx, Gpy, Gpz);
 
     //cout << fi << endl;
-    //cout << theta << endl;
+    //cout << thetsa << endl;
     return 0;
 }
