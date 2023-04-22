@@ -11,7 +11,6 @@ using namespace std;
 
 double roll_angle(double Gpy, double Gpz) {
     double fi = atan2(Gpy, Gpz)*180/M_PI; // converting to arctan and rad to grad
-
     return fi;
 }
 
@@ -24,6 +23,9 @@ double pitch_angle(double Gpx, double Gpy, double Gpz) {
 
 int main() {
 
+    ofstream data_save("pitch_and_roll_angles_c++.csv");
+    data_save << "data,roll(fi) angle,pitch(theta) angle\n";
+    
     vector<string> data;
     vector<vector<string>> organizated;
     
@@ -47,34 +49,42 @@ int main() {
         vector<string> temp;
         size_t start = 0;
         size_t end = 0;
+
         while ((end = element.find(';', start)) != string::npos) {
             temp.push_back(element.substr(start, end-start));
             start = end + 1;
         }
+
         temp.push_back(element.substr(start));
         organizated.push_back(temp);
     }
 
     for (const auto& i : organizated) {
         
-        string Gpx = i[1];
-        string Gpy = i[2];
-        string Gpz = i[3];
-
-        cout << "Indíce ---" << endl;
+        time_t time_stamp = stoi(i[0]);
+        double Gpx = stod(i[1]);
+        double Gpy = stod(i[2]);
+        double Gpz = stod(i[3]);
+        
+        cout << "For time: " << ctime(&time_stamp);
+        cout << "Gpx, Gpy and Gpz" << endl;
         cout << Gpx << endl;
         cout << Gpy << endl;
         cout << Gpz << endl;
-    } 
-    
-    //double Gpx = 0.461105;
-    //double Gpy = 0.082198;
-    //double Gpz = -0.1;
+        cout << "Roll angle:" << endl;
 
-    //double fi = roll_angle(Gpy, Gpz);
-    //double theta = pitch_angle(Gpx, Gpy, Gpz);
+        double fi = roll_angle(Gpy, Gpz);
+        cout << fi << endl; 
 
-    //cout << fi << endl;
-    //cout << thetsa << endl;
+        cout << "Pitch angle:" << endl;
+        double theta = pitch_angle(Gpx, Gpy, Gpz);
+        cout << theta << endl;
+        cout << "\n" << endl;
+
+        data_save << ctime(&time_stamp) << "," << fi << "," << theta << "\n";
+    }
+     
+    data_save.close();
+
     return 0;
 }

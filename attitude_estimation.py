@@ -51,7 +51,7 @@ for i in organizated:
     print(Gpx)
     print(Gpy)
     print(Gpz)
-    print('Rolls angles: ')
+    print('Rolls angle: ')
     fi = roll_angle(Gpy, Gpz)
     print(fi)
     print('Pitch angle: ')
