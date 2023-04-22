@@ -25,6 +25,7 @@ PARA PYTHON:
 
 - as axis estão em millig unit
 - no arquivo CSV o timestamp ficará convertido para o tempo humano
+- o arquivo CSV se chama "pitch_and_roll_angles.csv"
 
 PARA C++:
 
@@ -34,6 +35,7 @@ PARA C++:
 
 - as axis estão em millig unit
 - no arquivo CSV o timestamp ficará convertido para o tempo humano (não consegui adicionar uma vírgula ao final da Data, então em C++ ela está 1 acima) 
+- o arquivo CSV se chama "pitch_and_roll_angles_c++.csv"
 - os valores negativos em double não são printados no cout
 
 As saídas dos dois códigos são: DATA HUMANA, ROLL ANGLE, PITCH ANGLE
